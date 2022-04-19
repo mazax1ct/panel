@@ -72,4 +72,10 @@ rangeSliders.forEach(function(item, i, arr) {
 
 
   }
+
+  if(item.classList.contains('widget__container--slider_vertical')) {
+    let itemHeight = item.clientHeight;
+
+    range.style.maxWidth = itemHeight - 160 + 'px';
+  }
 });
