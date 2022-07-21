@@ -237,6 +237,11 @@
 
     &__grids-list-item {
         margin-bottom: 5px;
+
+        .panel__grids-button {
+            font-size: 16px;
+            padding: 12px 12px 6px;
+        }
     }
 
     &__grids-button {
@@ -271,6 +276,10 @@
 
     &__grids-button-grid {
         height: 100%;
+
+        &:not(:last-child) {
+            height: 80%;
+        }
 
         .panel__grid-cell {
             padding: 0;
