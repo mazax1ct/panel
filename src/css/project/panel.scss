@@ -47,9 +47,10 @@
         border-radius: 12px;
         color: #fff;
         cursor: pointer;
-        font-size: 28px;
+        font-size: 26px;
         padding-left: 12px;
         padding-right: 12px;
+        transition: all 600ms;
 
         &:hover {
             border-color: #1492E6;
@@ -62,7 +63,8 @@
 
         &--type_1 {
             height: 50px;
-            min-width: 240px;
+            min-width: 200px;
+            line-height: 1;
         }
 
         &--type_2 {
@@ -83,8 +85,9 @@
     }
 
     &__button-title {
-        max-height: 66px;
+        max-height: 50px;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &__grids {
@@ -108,7 +111,7 @@
     &__grid-cell {
         align-items: center;
         border-radius: 4px;
-        border: 1px solid #1492E6;
+        border: 2px solid #1492E6;
         background-color: #3F506E;
         display: flex;
         justify-content: center;
@@ -207,15 +210,14 @@
 
     &__grids-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-column-gap: 60px;
-        grid-row-gap: 10px;
+        overflow-y: auto;
         max-height: 270px;
-        overflow-y: auto;
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: #1492E6 rgba(#1492E6, 0.2);
+        scrollbar-color: #1492e6 rgba(20, 146, 230, .2);
         scrollbar-gutter: stable both-edges;
+        scrollbar-width: thin;
+        grid-template-columns: max-content max-content max-content max-content;
+        grid-column-gap: 5px;
+        justify-content: center;
 
         &::-webkit-scrollbar {
             height: 6px;
@@ -233,17 +235,21 @@
         }
     }
 
+    &__grids-list-item {
+        margin-bottom: 5px;
+    }
+
     &__grids-button {
-        border: 3px solid #1E293D;
-        background-color: #3F506E;
-        border-radius: 12px;
-        color: #fff;
-        cursor: pointer;
-        font-size: 30px;
-        height: 130px;
+        display: block;
+        font-size: 24px;
         min-width: 240px;
-        padding-left: 12px;
-        padding-right: 12px;
+        height: 130px;
+        padding: 20px;
+        cursor: pointer;
+        color: #fff;
+        border: 3px solid #1e293d;
+        border-radius: 12px;
+        background-color: #3f506e;
 
         &:hover {
             border-color: #1492E6;
@@ -252,21 +258,19 @@
         &.is-active {
             color: #1492E6;
             border-color: #1E293D;
-
-            .panel__grid-cell {
-                border: 0.5px solid #3F506E;
-                background-color: #1492E6;
-                padding: 0;
-            }
         }
 
         &:not(:last-child) {
             margin-right: 30px;
         }
+
+        .panel__grids-container {
+            border: none;
+        }
     }
 
     &__grids-button-grid {
-        height: 56px;
+        height: 100%;
 
         .panel__grid-cell {
             padding: 0;
@@ -329,6 +333,7 @@
 .widget-grid-container {
     background-color: #2F3B52;
     flex-grow: 1;
+    max-height: calc(100% - 202px);
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 20px 54px;
@@ -340,7 +345,8 @@
     grid-template-columns: repeat(auto-fit, minmax(calc((100% - 110px)/12), 1fr));
     grid-auto-rows: 96px;
     grid-auto-flow: dense;
-    max-height: 838px;
+    height: 100%;
+    //max-height: 838px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #1492E6 rgba(#1492E6, 0.2);
@@ -738,4 +744,22 @@
             mask: radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
         }
     }
+}
+
+body .panel__controls-source .panel__button:active,
+body .panel__grids-button.is-active,
+body .panel__grids-button:active {
+    border-color: #ffa500;
+}
+
+.panel__grids-button:active .panel__grid-cell,
+body .panel__grids-button.is-active .panel__grid-cell {
+    border-color: #ffffff;
+    background: none;
+}
+
+.panel__controls-source .panel__button-title.bg {
+    background: #0000005c;
+    display: inline;
+    padding: 0 5px;
 }
